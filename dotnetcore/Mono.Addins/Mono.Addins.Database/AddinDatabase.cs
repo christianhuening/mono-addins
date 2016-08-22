@@ -30,7 +30,6 @@
 using System;
 using System.Threading;
 using System.Collections;
-using System.Collections.Hashtable;
 using System.Collections.Specialized;
 using System.IO;
 using System.Xml;
@@ -38,6 +37,7 @@ using System.Reflection;
 using Mono.Addins.Description;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Loader;
 
 namespace Mono.Addins.Database
 {
@@ -1110,7 +1110,7 @@ namespace Mono.Addins.Database
 					if (!File.Exists (f))
 						continue;
 					try {
-						File.OpenWrite (f).Close ();
+						File.OpenWrite (f);
 					} catch {
 						canUninstall = false;
 						break;
